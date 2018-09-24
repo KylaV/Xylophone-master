@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import AVFoundation
+import AudioToolbox
 
 class ViewController: UIViewController{
     
     let url = Bundle.main.url(forResource: "note1", withExtension: "wav")!
-    
-    var player = AVAudioPlayer?.self 
     
     
     override func viewDidLoad() {
@@ -24,8 +22,15 @@ class ViewController: UIViewController{
 
     @IBAction func notePressed(_ sender: UIButton) {
         
-        print(sender.tag)
+        // Load "mysoundname.wav"
         
+        if let soundURL = Bundle.main.url(forResource: "note1", withExtension: "wav") {
+            var mySound: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(soundURL as CFURL, &mySound)
+            // Play
+            
+        AudioServicesPlaySystemSound(mySound);
+        }
         
     }
     

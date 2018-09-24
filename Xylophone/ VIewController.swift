@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController{
     
-
+    let url = Bundle.main.url(forResource: "note1", withExtension: "wav")!
+    
+    var player = AVAudioPlayer?.self 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
